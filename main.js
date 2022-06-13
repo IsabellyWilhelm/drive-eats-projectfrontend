@@ -85,5 +85,39 @@ function pedido() {
 }
 
 
+function confirmePedido() {
+    const botaoFecharPedido = document.querySelector(".barra-base .fecharPedido");
+    const containerOpaco = document.querySelector(".container-opaco");
+
+    if (botaoFecharPedido !== null){
+        containerOpaco.classList.remove("escondido");
+
+        //comida selecionada 
+        const tituloComida = document.querySelector(".prato .borda .info h2").innerHTML; 
+        document.querySelector(".box-comida .item-escolhido").innerHTML = `${tituloComida}`;
+        const precoComida = document.querySelector(".prato .borda .info p").innerHTML;
+        document.querySelector(".box-comida .preco").innerHTML = `${precoComida}`;
+
+        //bebida selecionada 
+        const tituloBebida = document.querySelector(".bebida .borda .info h2").innerHTML; 
+        document.querySelector(".box-bebida .item-escolhido").innerHTML = `${tituloBebida}`;
+        const precoBebida = document.querySelector(".bebida .borda .info p").innerHTML;
+        document.querySelector(".box-bebida .preco").innerHTML = `${precoBebida}`;
+
+        //sobremesa selecionada 
+        const tituloSobremesa = document.querySelector(".sobremesa .borda .info h2").innerHTML; 
+        document.querySelector(".box-sobremesa .item-escolhido").innerHTML = `${tituloSobremesa}`;
+        const precoSobremesa = document.querySelector(".sobremesa .borda .info p").innerHTML;
+        document.querySelector(".box-sobremesa .preco").innerHTML = `${precoSobremesa}`;
+
+        //total
+        const valorComida = Number((precoComida).replace("R$","").replace(",","."));
+        const valorBebida = Number((precoBebida).replace("R$","").replace(",","."));
+        const valorSobremesa = Number((precoSobremesa).replace("R$","").replace(",","."));
+        const total = (valorComida + valorBebida + valorSobremesa).toFixed(2).replace(".",",");
+        document.querySelector(".box-total .preco-total").innerHTML = `R$ ${total}`;
+    }
+}
+
 
 
